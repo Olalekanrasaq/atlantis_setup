@@ -1,0 +1,21 @@
+version: '3'
+services:
+  atlantis:
+    image: ghcr.io/runatlantis/atlantis:latest
+    ports:
+      - "4141:4141"
+    command: server
+    environment:
+      ATLANTIS_GH_USER: ${ATLANTIS_GH_USER}
+      ATLANTIS_GH_TOKEN: ${ATLANTIS_GH_TOKEN}
+      ATLANTIS_GH_WEBHOOK_SECRET: ${ATLANTIS_GH_WEBHOOK_SECRET}
+      ATLANTIS_REPO_ALLOWLIST: ${ATLANTIS_REPO_ALLOWLIST}
+      ATLANTIS_ATLANTIS_URL: ${ATLANTIS_ATLANTIS_URL}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION}
+    volumes:
+      - atlantis-data:/home/atlantis
+
+volumes:
+  atlantis-data:
