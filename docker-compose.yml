@@ -14,8 +14,16 @@ services:
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       AWS_REGION: ${AWS_REGION}
+      SNOWFLAKE_ORGANIZATION_NAME: ${SNOWFLAKE_ORGANIZATION_NAME}
+      SNOWFLAKE_ACCOUNT_NAME: ${SNOWFLAKE_ACCOUNT_NAME}
+      SNOWFLAKE_USER: ${SNOWFLAKE_USER}
+      SNOWFLAKE_ROLE: ${SNOWFLAKE_ROLE}
+      SNOWFLAKE_AUTHENTICATOR: ${SNOWFLAKE_AUTHENTICATOR}
+      # SNOWFLAKE_PRIVATE_KEY: ${SNOWFLAKE_PRIVATE_KEY}
+      # SNOWFLAKE_PRIVATE_KEY: file("/home/atlantis/.snowflake/snowflake_tf_snow_key.p8")
     volumes:
       - atlantis-data:/home/atlantis
+      - ./snowflake_tf_snow_key.p8:/home/atlantis/.snowflake/snowflake_tf_snow_key.p8:ro
 
 volumes:
   atlantis-data:
